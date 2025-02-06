@@ -25,6 +25,8 @@ from sklearn.ensemble import (
 )
 import mlflow
 
+import dagshub
+dagshub.init(repo_owner='Anurag09-K', repo_name='Networksecurity', mlflow=True)
 
 
 
@@ -126,6 +128,8 @@ class ModelTrainer:
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
 
+        #model pusher
+        save_object("final_models\model.pkl",best_model)
         
 
         ## Model Trainer Artifact
